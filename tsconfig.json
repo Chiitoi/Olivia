@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "incremental": true,
+        "lib": [
+            "ESNext",
+            "ESNext.Array",
+            "ESNext.AsyncIterable",
+            "ESNext.Intl",
+            "ESNext.Symbol",
+            "DOM"
+        ],
+        "module": "commonjs",
+        "outDir": "dist",
+        "target": "ES2020",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": false,
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/**/*"],
+}

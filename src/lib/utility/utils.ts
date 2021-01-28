@@ -1,0 +1,1 @@
+export const format = (x: number) => x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')

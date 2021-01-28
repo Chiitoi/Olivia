@@ -1,0 +1,29 @@
+{
+  "name": "Olivia",
+  "version": "1.0.0",
+  "description": "A Discord emote bot",
+  "main": "index.js",
+  "repository": "https://github.com/Chiitoi/Olivia.git",
+  "author": "Chiitoi",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn clean && tsc",
+    "clean": "rimraf dist",
+    "start": "node -r dotenv/config dist/bot.js"
+  },
+  "dependencies": {
+    "@sapphire/decorators": "^2.0.3",
+    "@sapphire/framework": "^1.0.0-alpha.3",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "pg": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.30"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.3"
+  }
+}
