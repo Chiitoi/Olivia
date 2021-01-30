@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "@sapphire/decorators": "^2.0.3",
-    "@sapphire/framework": "^1.0.0-alpha.3",
+    "@sapphire/framework": "^1.0.0-alpha.4",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.30"

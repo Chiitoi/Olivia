@@ -1,17 +1,27 @@
 import { SapphireClient } from '@sapphire/framework'
-import { Intents } from 'discord.js'
+import { Message, Intents } from 'discord.js'
 import { join } from 'path'
-import { TOKEN } from '../config'
-// import { Settings } from '../'
+import { getCustomRepository } from 'typeorm'
+import { PREFIX, TOKEN } from '../config'
+import SettingsRepository from './structures/SettingsRepository'
+import { SETTINGS } from './utility/constants'
+import { connect } from './utility/utils'
+
+declare module '@sapphire/framework' {
+    interface SapphireClient {
+        settings: SettingsRepository
+    }
+}
 
 export default class OliviaClient extends SapphireClient {
-    // public settings: Settings
+    public settings: SettingsRepository
 
     public constructor(){
         super({
             baseUserDirectory: join(__dirname, '..'),
             caseInsensitiveCommands: true,
-            defaultPrefix: 'o!',
+            defaultPrefix: PREFIX,
+            fetchPrefix: (message: Message) => this.settings.get(message.guild, SETTINGS.PREFIX) ?? PREFIX,
             messageCacheLifetime: 3600,
             messageCacheMaxSize: 0,
             messageSweepInterval: 2700,
@@ -26,12 +36,14 @@ export default class OliviaClient extends SapphireClient {
     }
 
     private async init() {
+        await connect()
 
+        this.settings = getCustomRepository(SettingsRepository)
+        await this.settings.init()
     }
 
     public async start() {
         await this.init()
         await this.login(TOKEN)
     }
-
 }
