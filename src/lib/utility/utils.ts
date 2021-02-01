@@ -1,7 +1,7 @@
 import { createConnection } from 'typeorm'
 import { ormconfig } from './constants'
 
-export const format = (x: number) => x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+export const format = (x: number | string) => x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
 export const connect = async () => {
     try {
