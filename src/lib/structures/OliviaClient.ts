@@ -2,10 +2,10 @@ import { SapphireClient } from '@sapphire/framework'
 import { Message, Intents } from 'discord.js'
 import { join } from 'path'
 import { getCustomRepository } from 'typeorm'
-import { PREFIX, TOKEN } from '../config'
-import SettingsRepository from './structures/SettingsRepository'
-import { SETTINGS } from './utility/constants'
-import { connect } from './utility/utils'
+import { PREFIX, TOKEN } from '../../config'
+import SettingsRepository from './SettingsRepository'
+import { SETTINGS } from '../utility/constants'
+import { connect } from '../utility/utils'
 
 declare module '@sapphire/framework' {
     interface SapphireClient {
@@ -18,10 +18,10 @@ export default class OliviaClient extends SapphireClient {
 
     public constructor(){
         super({
-            baseUserDirectory: join(__dirname, '..'),
+            baseUserDirectory: join(__dirname, '..', '..'),
             caseInsensitiveCommands: true,
             defaultPrefix: PREFIX,
-            fetchPrefix: (message: Message) => this.settings.get(message.guild, SETTINGS.PREFIX) ?? PREFIX,
+            fetchPrefix: (message: Message) => this.settings.get(message.guild, SETTINGS.PREFIX),
             messageCacheLifetime: 3600,
             messageCacheMaxSize: 0,
             messageSweepInterval: 2700,

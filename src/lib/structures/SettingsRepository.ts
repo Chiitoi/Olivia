@@ -15,26 +15,26 @@ export default class SettingsRepository extends AbstractRepository<SettingsEntit
     }
 
     public get(guild: Guild): SettingsEntity
-    public get<K extends keyof Omit<SettingsEntity, 'guildId'>>(guild: Guild, key: K): SettingsEntity[K]
-    public get<K extends keyof Omit<SettingsEntity, 'guildId'>>(guild: Guild, key?: K): SettingsEntity | SettingsEntity[K] {
+    public get<K extends keyof SettingsEntity>(guild: Guild, key: K): SettingsEntity[K]
+    public get<K extends keyof SettingsEntity>(guild: Guild, key?: K): SettingsEntity | SettingsEntity[K] {
         const guildId = guild.id
         const settings = this.items.get(guildId)
 
         if (!settings)
             return
-        if (key)
+        if (!key)
             return settings
         
         return settings[key]
     }
 
     public async set(guild: Guild): Promise<void>
-    public async set<K extends keyof Omit<SettingsEntity, 'guildId'>>(guild: Guild, key: K, value: SettingsEntity[K]): Promise<void>
-    public async set<K extends keyof Omit<SettingsEntity, 'guildId'>>(guild: Guild, key?: K, value?: SettingsEntity[K]): Promise<void> {
+    public async set<K extends keyof SettingsEntity>(guild: Guild, key: K, value: SettingsEntity[K]): Promise<void>
+    public async set<K extends keyof SettingsEntity>(guild: Guild, key?: K, value?: SettingsEntity[K]): Promise<void> {
         const guildId = guild.id
         const settings = this.items.get(guildId)
 
-        if (!guild) {
+        if (!settings) {
             const item = await this.repository.save(this.repository.create({ guildId }))
             this.items.set(item.guildId, item)
         }
