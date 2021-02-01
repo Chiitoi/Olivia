@@ -6,6 +6,7 @@ import pms from 'pretty-ms'
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Displays bot information.',
+    preconditions: ['botChannelOnly'],
     usage: 'stats'
 })
 export default class extends OliviaCommand {

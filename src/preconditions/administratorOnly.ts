@@ -1,7 +1,7 @@
 import { Precondition } from '@sapphire/framework'
 import { Message, Permissions } from 'discord.js'
 
-export default class AdministratorOnly extends Precondition {
+export default class extends Precondition {
     public run(message: Message) {
         const { member: { permissions }, guild } = message
 
