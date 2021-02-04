@@ -6,9 +6,9 @@ export default class extends Precondition {
         const { member: { permissions }, guild } = message
 
         if (!guild)
-            return this.error('No guild found.')
+            return this.error({ message: 'No guild found.' })
         if (!permissions.has(Permissions.FLAGS.ADMINISTRATOR))
-            return this.error('Not an administrator.')
+            return this.error({ message: 'Not an administrator.' })
         return this.ok()     
     }
 }
