@@ -27,3 +27,22 @@ export const connect = async () => {
         process.exit(1)  
     }
 }
+
+export const formatChannels = (channelIds: string[]) => {
+    const { length } = channelIds
+
+    if (!length)
+        return 'No channels in this list.'
+
+    const text = channelIds.reduce((acc, channelId, index) => {
+        if (index == length - 2)
+            acc += `<#${ channelId }>${ length == 2 ? '' : ','} and `
+        else if (index == length - 1)
+            acc += `<#${ channelId }>`
+        else
+            acc += `<#${ channelId }>, `
+        return acc
+    }, '')
+
+    return text
+}
