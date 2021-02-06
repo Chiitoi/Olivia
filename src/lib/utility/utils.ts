@@ -1,5 +1,8 @@
+import { EmojiRegex, TwemojiRegex } from '@sapphire/discord-utilities'
+import axios, { AxiosError } from 'axios'
+import { byteLength } from 'base64-js'
 import { createConnection } from 'typeorm'
-import { ormconfig } from './constants'
+import { ormconfig, ERRORS } from './constants'
 
 export const format = (x: number | string) => x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 
@@ -45,4 +48,48 @@ export const formatChannels = (channelIds: string[]) => {
     }, '')
 
     return text
+}
+
+const isAxiosError = (error: any): error is AxiosError => (error as AxiosError).isAxiosError === true
+
+export const parseEmojiURLOrBase64 = async (str: string) => {
+    const twemoji = new RegExp(TwemojiRegex).exec(str)
+
+    if (twemoji)
+        return { base64String: null, defaultEmoji: true, givenName: null, url: null }
+
+    const emoji = EmojiRegex.exec(str)
+
+    if (emoji) {
+        const { animated, id, name } = emoji.groups
+
+        return { base64String: null, defaultEmoji: false, givenName: name, url: `https://cdn.discordapp.com/emojis/${ id }.${ !!animated ? 'gif' : 'png' }` }
+    }
+
+    try {
+        const url = new URL(str)?.href.split(/[?#]/)[0]
+        const response = await axios.get(url, { responseType: 'arraybuffer' })
+        const { headers: { 'content-type': contentType } } = response
+        
+        if (!['image/gif', 'image/jpeg', 'image/png', 'image/webp'].includes(contentType))
+            return { error: ERRORS.INVALID_TYPE }
+
+        const base64String = Buffer.from(response.data, 'binary').toString('base64')
+        const bytes = byteLength(base64String)
+
+        if (bytes > 262144)
+            return { error: ERRORS.TOO_BIG }
+
+        return { base64String, defaultEmoji: false, givenName: null, url: null }
+    } catch (error) {
+        if (error instanceof TypeError)
+            return { error: ERRORS.INVALID_URL }
+
+        if (isAxiosError(error)) {
+            const status = error.response.status
+            
+            if (status === 403)
+                return { error: ERRORS.ERROR_403 }
+        }
+    }
 }
