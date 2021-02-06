@@ -19,8 +19,8 @@ export abstract class OliviaCommand extends Command {
 
     public get category(): string {
         const parts = this.path.split(path.sep)
-        const category = parts[parts.length - 1]
-        return category.charAt(0).toUpperCase() + category.slice(1)
+        const category = parts[parts.length - 2]
+        return category.toLowerCase()
     }
 
     public toJSON(): Record<string, any> {

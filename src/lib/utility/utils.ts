@@ -1,6 +1,11 @@
+import { OliviaCommand } from '@lib/structures/OliviaCommand'
 import { EmojiRegex, TwemojiRegex } from '@sapphire/discord-utilities'
+import { Command, CommandStore } from '@sapphire/framework'
 import axios, { AxiosError } from 'axios'
 import { byteLength } from 'base64-js'
+import { Collection } from 'discord.js'
+import fs from 'fs/promises'
+import { join } from 'path'
 import { createConnection } from 'typeorm'
 import { ormconfig, ERRORS } from './constants'
 
@@ -92,4 +97,26 @@ export const parseEmojiURLOrBase64 = async (str: string) => {
                 return { error: ERRORS.ERROR_403 }
         }
     }
+}
+
+export const formatCategoryName = (categoryName: string) => categoryName.charAt(0).toUpperCase() + categoryName.slice(1)
+
+export const formatCommands = async (commands: CommandStore) => {
+    const commandDirectory = join(__dirname, '..', '..', 'commands')
+    const categoryNames = await fs.readdir(commandDirectory)
+    const categories = new Collection<string, Collection<string, Command>>()
+
+    for (const categoryName of categoryNames)
+        categories.set(categoryName, new Collection<string, Command>())
+
+    for (const [_, command] of commands) {
+        const categoryName = (command as OliviaCommand).category
+        categories.get(categoryName).set(command.name, command)
+    }
+
+    for (const [_, category] of categories) {
+        category.sort((a, b) => a.name.localeCompare(b.name))
+    }
+
+    return categories
 }
