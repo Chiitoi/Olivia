@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@sapphire/decorators": "^2.0.3",
-    "@sapphire/framework": "^1.0.0-alpha.5",
+    "@sapphire/framework": "^1.0.0-alpha.7",
     "axios": "^0.21.1",
     "base64-js": "^1.5.1",
     "discord.js": "^12.5.1",

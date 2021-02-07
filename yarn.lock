@@ -35,7 +35,7 @@
   dependencies:
     "@sapphire/discord-utilities" "^2.0.1"
 
-"@sapphire/framework@^1.0.0-alpha.5":
+"@sapphire/framework@^1.0.0-alpha.7":
   version "1.0.0-alpha.7"
   resolved "https://registry.yarnpkg.com/@sapphire/framework/-/framework-1.0.0-alpha.7.tgz#8521a8b28c75c939ec8f98d068f6326329036b4b"
   integrity sha512-wpCta832ipaGTO3RX1TRMsytOSwwZqWMvwrDUzioBMx6jNjjg8oWhL83lKnv6xjsqzAbryj1PrVi93zUZ3UiAQ==
