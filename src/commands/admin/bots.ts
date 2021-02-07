@@ -1,8 +1,8 @@
 import { OliviaCommand, OliviaCommandOptions } from '@lib/structures/OliviaCommand'
+import { MESSAGES, SETTINGS } from '@lib/utility/constants'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args, none, some } from '@sapphire/framework'
 import type { Message } from 'discord.js'
-import { MESSAGES, SETTINGS } from '@lib/utility/constants'
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Modifies bot channel list for usage of non-admin commands.',

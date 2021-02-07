@@ -5,6 +5,7 @@ import type { Message, MessageEmbed } from 'discord.js'
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Gets the invite link for Olivia.',
+    preconditions: [['administratorOnly', 'botChannelOnly']],
     usage: 'invite'
 })
 export default class extends OliviaCommand {

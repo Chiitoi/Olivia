@@ -1,8 +1,8 @@
 import { OliviaCommand, OliviaCommandOptions } from '@lib/structures/OliviaCommand'
+import { MESSAGES, SETTINGS } from '@lib/utility/constants'
 import { ApplyOptions } from '@sapphire/decorators'
 import { Args } from '@sapphire/framework'
 import type { Message } from 'discord.js'
-import { MESSAGES, SETTINGS } from '@lib/utility/constants'
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Modifies bot prefix.',

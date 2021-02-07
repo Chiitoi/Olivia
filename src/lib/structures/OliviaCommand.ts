@@ -7,8 +7,8 @@ export interface OliviaCommandOptions extends CommandOptions {
 }
 
 export abstract class OliviaCommand extends Command {
-    public examples: string[]
-    public usage: string
+    public examples: Readonly<string[]>
+    public usage: Readonly<string>
 
     protected constructor(context: PieceContext, options: OliviaCommandOptions) {
         super(context, options)

@@ -1,13 +1,13 @@
 import { OliviaCommand, OliviaCommandOptions } from '@lib/structures/OliviaCommand'
+import { MESSAGES, SETTINGS } from '@lib/utility/constants'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args, Command, CommandOptions, none, some } from '@sapphire/framework'
+import { Args } from '@sapphire/framework'
 import type { Message, MessageEmbed } from 'discord.js'
 import { formatCategoryName, formatCommands } from '@lib/utility/utils'
-import { MESSAGES, SETTINGS } from '@lib/utility/constants'
-
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Gets the invite link for Olivia.',
+    preconditions: [['administratorOnly', 'botChannelOnly']],
     usage: 'invite'
 })
 export default class extends OliviaCommand {
@@ -35,6 +35,7 @@ export default class extends OliviaCommand {
             }
         } else if (commands.has(query)) {
             const { aliases, category, description, examples, name, usage } = commands.get(query) as OliviaCommand
+            
             embed = {
                 color: 16316671,
                 fields: [
@@ -43,14 +44,13 @@ export default class extends OliviaCommand {
                     { inline: false, name: 'Usage', value: `\`${ prefix }${ usage }\`` }
                 ],
                 footer: { text: 'Optional - [] | Required - <>' },
-                title: `The "${ prefix }${ name }" command`,
+                title: `The "${ prefix }${ name }" command`
             }
 
-            if (examples)
+            if (examples.length)
                 embed.fields.push({ inline: false, name: 'Examples', value: examples.map(example => `\`${ prefix }${ example }\``).join('\n') })
-            if (aliases?.length)
+            if (aliases.length)
                 embed.fields.push({ inline: false, name: 'Aliases', value: aliases.map(alias => `\`${ prefix }${ alias }\``).join('\n') })
-
         } else if (categories.has(query)) {
             const category = categories.get(query)
 

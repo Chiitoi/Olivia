@@ -5,6 +5,7 @@ import type { Message, MessageEmbed } from 'discord.js'
 
 @ApplyOptions<OliviaCommandOptions>({
     description: 'Checks Discord API latency.',
+    preconditions: [['administratorOnly', 'botChannelOnly']],
     usage: 'ping'
 })
 export default class extends OliviaCommand {

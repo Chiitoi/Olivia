@@ -6,8 +6,8 @@ import { Args, none, some } from '@sapphire/framework'
 import type { Message } from 'discord.js'
 
 @ApplyOptions<OliviaCommandOptions>({
-    description: 'Adds a given custom emoji to your server',
-    preconditions: ['administratorOnly'],
+    description: 'Adds a given custom emoji to your server.',
+    preconditions: [['administratorOnly', ['mangageEmojis', 'botChannelOnly']]],
     usage: 'add <emoji> [name]'
 })
 export default class extends OliviaCommand {
@@ -36,7 +36,7 @@ export default class extends OliviaCommand {
 
         if (base64String && !name)
             return message.channel.send(MESSAGES.ERRORS.NAME)
-        if (name?.length > 32)
+        if (name?.length > 32 || name?.length < 2)
             return message.channel.send(MESSAGES.INFO.NAME_LIMIT)
 
         const emoji = await guild.emojis.create(url || base64String, name || givenName)
