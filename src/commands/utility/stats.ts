@@ -15,7 +15,7 @@ export default class extends OliviaCommand {
         const guilds = client.guilds.cache
         const embed: Partial<MessageEmbed> = {
             author: {
-                name: `${ client.user.username} v${ process.env.npm_package_version }`,
+                name: `${ client.user.username} v${ process.env.npm_package_version ?? process.env.version }`,
                 iconURL: client.user.displayAvatarURL()
             },
             color: 16316671,
