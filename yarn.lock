@@ -21,36 +21,36 @@
   resolved "https://registry.yarnpkg.com/@sapphire/decorators/-/decorators-2.0.3.tgz#903d04fafd6fc15ac49d11f8d677e605d7916ca2"
   integrity sha512-mRzzjf+tu0p/WbJdzqTodiLpxcQqM5MeaW1sZS5geUVnjXPgRZnAnevPACqOMmM+OFP8meHL7uCwK0noOapRMw==
 
-"@sapphire/discord-utilities@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@sapphire/discord-utilities/-/discord-utilities-2.0.1.tgz#47b159b848bcc7d30647a127d88482d8e567795b"
-  integrity sha512-+70TerQgp1IFgDBuzZ5jNGsTwcyGlOd1STELqmWKtALY2JnKm5Nzxs8/rtCsfwMLABHQ54O9007UzuymcXhDnA==
+"@sapphire/discord-utilities@^2.0.1", "@sapphire/discord-utilities@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@sapphire/discord-utilities/-/discord-utilities-2.0.3.tgz#0419bc5d9821ce94a432b981e3db86e6e597b358"
+  integrity sha512-T/g2ueflVom8kMzKrLR8aHjzhH4UiTX3Ec0APQjfEK3/onVeGtNPDi/WEnamH4Ckwu+m4trmeNMy4uqe/Na+sA==
   dependencies:
     twemoji-parser "^13.0.0"
 
 "@sapphire/discord.js-utilities@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sapphire/discord.js-utilities/-/discord.js-utilities-1.4.0.tgz#9a0980d1a41cad908203904a6ca8fde2a6da6fd0"
-  integrity sha512-uzu5awK8qtGf/Oyyzg0ATBdiI80wUw+GdzqIKZ5p1CKQGydJ74LVFdmm6g9d3+g1vCMfCcON46LcnzfWtHhDZA==
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@sapphire/discord.js-utilities/-/discord.js-utilities-1.4.2.tgz#6118bac875878be46174aa291d7e36d0fce56ff0"
+  integrity sha512-Tqv5KysKmgQzr1Cah/9vvivwfJGWpofaqeTix0SqFIMMzD7QA97PImNhgI5KiAZL9pjuK4uyQF2xNYiQHPKSzg==
   dependencies:
-    "@sapphire/discord-utilities" "^2.0.1"
+    "@sapphire/discord-utilities" "^2.0.3"
 
-"@sapphire/framework@^1.0.0-alpha.7":
-  version "1.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@sapphire/framework/-/framework-1.0.0-alpha.7.tgz#8521a8b28c75c939ec8f98d068f6326329036b4b"
-  integrity sha512-wpCta832ipaGTO3RX1TRMsytOSwwZqWMvwrDUzioBMx6jNjjg8oWhL83lKnv6xjsqzAbryj1PrVi93zUZ3UiAQ==
+"@sapphire/framework@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@sapphire/framework/-/framework-1.0.0-alpha.10.tgz#468cfb5f935209512e68e7b09bd69d570e468fc6"
+  integrity sha512-93lj4RWa5xjlB9GiJHV+KuHBsXLgZvH1sU2U6Whg5GVtD4tI5qze/i2YoewW9epNrQB4JVlfLFa9DFWIPTHEQQ==
   dependencies:
     "@sapphire/discord-utilities" "^2.0.1"
     "@sapphire/discord.js-utilities" "^1.4.0"
-    "@sapphire/pieces" "^1.2.1"
+    "@sapphire/pieces" "^1.2.2"
     "@sapphire/ratelimits" "^1.1.4"
     "@sapphire/utilities" "^1.4.4"
     lexure "^0.17.0"
 
-"@sapphire/pieces@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@sapphire/pieces/-/pieces-1.2.1.tgz#ea43fae1e9377a9edca828411c3556d469f8e995"
-  integrity sha512-oObMXb8qHGDI8o+Ab1WbA1oN+ejbj9dHXGAZZ6HQ1QXU6XVyA2qRDDjz+F4YAZZuDNtb679FVuLL49bIz0YGiw==
+"@sapphire/pieces@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@sapphire/pieces/-/pieces-1.2.2.tgz#d84c11348db21e717b3a5878f48258bb6a284ea9"
+  integrity sha512-DoY+kzTJiaeQDk5qmxaY2uOl6lLYHIFn6JUmHdTnsdhpkiDmE83AXB/ZEY/KRHpLq6kIw28TPnvtDIrW1U1Kzg==
   dependencies:
     "@discordjs/collection" "^0.1.6"
 
@@ -69,10 +69,10 @@
   resolved "https://registry.yarnpkg.com/@sqltools/formatter/-/formatter-1.2.2.tgz#9390a8127c0dcba61ebd7fdcc748655e191bdd68"
   integrity sha512-/5O7Fq6Vnv8L6ucmPjaWbVG1XkP4FO+w5glqfkIsq3Xw4oyNAdJddbnYodNDAfjVUvo/rrSCTom4kAND7T1o5Q==
 
-"@types/node@^14.14.22":
-  version "14.14.25"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.25.tgz#15967a7b577ff81383f9b888aa6705d43fbbae93"
-  integrity sha512-EPpXLOVqDvisVxtlbvzfyqSsFeQxltFbluZNRndIb8tr9KiBnYNLzrc1N3pyKUCww2RNrfHDViqDWWE1LCJQtQ==
+"@types/node@^14.14.27":
+  version "14.14.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.27.tgz#c7127f8da0498993e13b1a42faf1303d3110d2f2"
+  integrity sha512-Ecfmo4YDQPwuqTCl1yBxLV5ihKfRlkBmzUEDcfIRvDxOTGQEeikr317Ln7Gcv0tjA8dVgKI3rniqW2G1OyKDng==
 
 abort-controller@^3.0.0:
   version "3.0.0"
@@ -328,9 +328,9 @@ has-flag@^4.0.0:
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
 highlight.js@^10.0.0:
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.5.0.tgz#3f09fede6a865757378f2d9ebdcbc15ba268f98f"
-  integrity sha512-xTmvd9HiIHR6L53TMC7TKolEj65zG1XU+Onr8oi86mYa+nLcIbxTTWkpW7CsEwv/vK7u1zb8alZIMLDqqN6KTw==
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.6.0.tgz#0073aa71d566906965ba6e1b7be7b2682f5e18b6"
+  integrity sha512-8mlRcn5vk/r4+QcqerapwBYTe+iPL5ih6xrNylxrnBdHQiijDETfXX7VIxC3UiCRiINBJfANBAsPzAvRQj8RpQ==
 
 ieee754@^1.1.13:
   version "1.2.1"
@@ -551,9 +551,9 @@ pretty-ms@^7.0.1:
     parse-ms "^2.1.0"
 
 prism-media@^1.2.2:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-1.2.5.tgz#a3fcb4f7873336d6fcf420213434c1bf5272efe1"
-  integrity sha512-YqSnMCugv+KUNE9PQec48Dq22jSxB/B6UcfD9jTpPN1Mbuh+RqELdTJmRPj106z3aa8ZuXrWGQllXPeIGmKbvw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/prism-media/-/prism-media-1.2.6.tgz#9e86f69c14342f546c96b7c1461cc8b3e46b48a3"
+  integrity sha512-I1Ys8HA+9aSKQ2jbkO3r6p9Z+tMpSssGhucgxXvc0sSpOi0kK550rDQnKtAS7Z5TzPQeLJdBmK2Br8x+5137lg==
 
 readable-stream@^3.0.0:
   version "3.6.0"
@@ -687,10 +687,10 @@ twemoji-parser@^13.0.0:
   resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-13.0.0.tgz#bd9d1b98474f1651dc174696b45cabefdfa405af"
   integrity sha512-zMaGdskpH8yKjT2RSE/HwE340R4Fm+fbie4AaqjDa4H/l07YUmAvxkSfNl6awVWNRRQ0zdzLQ8SAJZuY5MgstQ==
 
-typeorm@^0.2.30:
-  version "0.2.30"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.30.tgz#a0df2256402cbcdde8049a244437560495ce9b38"
-  integrity sha512-qpr8AO3Phi6ZF7qMHOrRdNisVt8jE1KfmW0ooLFcXscA87aJ12aBPyB9cJfxGNjNwd7B3WIK9ZlBveWiqd74QA==
+typeorm@^0.2.31:
+  version "0.2.31"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.31.tgz#82b8a1b233224f81c738f53b0380386ccf360917"
+  integrity sha512-dVvCEVHH48DG0QPXAKfo0l6ecQrl3A8ucGP4Yw4myz4YEDMProebTQo8as83uyES+nrwCbu3qdkL4ncC2+qcMA==
   dependencies:
     "@sqltools/formatter" "1.2.2"
     app-root-path "^3.0.0"
@@ -709,10 +709,10 @@ typeorm@^0.2.30:
     yargonaut "^1.1.2"
     yargs "^16.0.3"
 
-typescript@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
-  integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+typescript@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.5.tgz#123a3b214aaff3be32926f0d8f1f6e704eb89a72"
+  integrity sha512-6OSu9PTIzmn9TCDiovULTnET6BgXtDYL4Gg4szY+cGsc3JP1dQL8qvE8kShTRx1NIw4Q9IBHlwODjkjWEtMUyA==
 
 util-deprecate@^1.0.1:
   version "1.0.2"
@@ -771,9 +771,9 @@ yargonaut@^1.1.2:
     parent-require "^1.0.0"
 
 yargs-parser@^20.2.2:
-  version "20.2.4"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
-  integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
+  version "20.2.5"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.5.tgz#5d37729146d3f894f39fc94b6796f5b239513186"
+  integrity sha512-jYRGS3zWy20NtDtK2kBgo/TlAoy5YUuhD9/LZ7z7W4j1Fdw2cqD0xEEclf8fxc8xjD6X5Qr+qQQwCEsP8iRiYg==
 
 yargs@^16.0.0, yargs@^16.0.3:
   version "16.2.0"
