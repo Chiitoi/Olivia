@@ -75,8 +75,6 @@ export const parseEmojiURLOrBase64 = async (str: string) => {
 
     try {
         const url = new URL(str)?.href.split(/[?#]/)[0]
-
-        console.log({ url, emojiURL: DiscordEmojiURLRegex.test(url) })
         
         if (DiscordEmojiURLRegex.test(url))
             return { base64String: null, defaultEmoji: false, givenName: null, url }
