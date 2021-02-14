@@ -2,7 +2,7 @@ import { OliviaCommand, OliviaCommandOptions } from '@lib/structures/OliviaComma
 import { ERRORS, MESSAGES } from '@lib/utility/constants'
 import { parseEmojiURLOrBase64 } from '@lib/utility/utils'
 import { ApplyOptions } from '@sapphire/decorators'
-import { Args, none, some } from '@sapphire/framework'
+import { Args, err, none, some } from '@sapphire/framework'
 import type { Message } from 'discord.js'
 
 @ApplyOptions<OliviaCommandOptions>({
@@ -20,14 +20,20 @@ export default class extends OliviaCommand {
 
         const { base64String, defaultEmoji, error, givenName, url } = await parseEmojiURLOrBase64(phrase)
 
-        if (error == ERRORS.INVALID_URL)
-            return message.channel.send(MESSAGES.ERRORS.URL)
-        if (error == ERRORS.ERROR_403)
-            return message.channel.send(MESSAGES.ERRORS.ERROR_403)
-        if (error == ERRORS.INVALID_TYPE)
-            return message.channel.send(MESSAGES.INFO.IMAGE)
-        if (error == ERRORS.TOO_BIG)
-            return message.channel.send(MESSAGES.INFO.FILE_LIMIT)
+        if (error) {
+            if (error == ERRORS.INVALID_URL)
+                return message.channel.send(MESSAGES.ERRORS.URL)
+            else if (error == ERRORS.ERROR_403)
+                return message.channel.send(MESSAGES.ERRORS.HTTP_ERROR)
+            else if (error == ERRORS.ERROR_415)
+                return message.channel.send(MESSAGES.ERRORS.HTTP_ERROR)
+            else if (error == ERRORS.INVALID_TYPE)
+                return message.channel.send(MESSAGES.INFO.IMAGE)
+            else if (error == ERRORS.TOO_BIG)
+                return message.channel.send(MESSAGES.INFO.FILE_LIMIT)
+            else
+                return message.channel.send(MESSAGES.ERRORS.UNKNOWN)
+        }
         if (defaultEmoji)
             return message.channel.send(MESSAGES.INFO.DEFAULT_EMOJI)
 

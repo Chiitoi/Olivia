@@ -6,9 +6,11 @@ import { PG_DB_HOST, PG_DB_NAME, PG_DB_PASS, PG_DB_PORT, PG_DB_USER, PRODUCTION 
 
 export enum ERRORS {
     ERROR_403 = 'Forbidden',
+    ERROR_415 = 'Unsupported Media Type',
     INVALID_TYPE = 'Invalid type',
     INVALID_URL = 'Invalid URL',
-    TOO_BIG = 'File cannot be larger than 256.0 kb'    
+    TOO_BIG = 'File cannot be larger than 256.0 kb',
+    UNKNOWN = 'Unknown error'    
 }
 
 export enum SETTINGS {
@@ -49,11 +51,12 @@ export const MESSAGES = {
     ERRORS: {
         ACTION: EMBEDS.ERROR('Valid actions are **add**, **remove**, or **replace**.'),
         EMOJI: EMBEDS.ERROR(`Unable to add custom emoji. Please check your server's emoji limits with the \`limits\` command. If within limits, DM Flare#2851 with the emote or image link.`),
-        ERROR_403: EMBEDS.ERROR('Unable to retrieve image. If an image exists, please try uploading it to Discord and using that link.'),
+        HTTP_ERROR: EMBEDS.ERROR('Unable to retrieve image. If an image exists, please try uploading it to Discord and using that link.'),
         NAME: EMBEDS.ERROR('For image links, a name must be provided.'),
         NOT_FOUND: (type: string) => EMBEDS.ERROR(`No ${ type } found.`),
-        URL: EMBEDS.ERROR('Invalid URL.'),
         PREFIX: EMBEDS.ERROR('Bot prefix must not contain spaces, not contain spaces, have at least one special character, and be a maximum of three characters.'),
+        URL: EMBEDS.ERROR('Invalid URL.'),
+        UNKNOWN: EMBEDS.ERROR('Unhandled error. Please DM Flare#2851 with the emote or image link used in this command.')
     },
     STATES: {
         CHANNEL_ADDED: (channel: TextChannel) =>  EMBEDS.SUCCESS(`${ channel } was added to the bot channel list.`),

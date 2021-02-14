@@ -57,6 +57,8 @@ export const formatChannels = (channelIds: string[]) => {
 
 const isAxiosError = (error: any): error is AxiosError => (error as AxiosError).isAxiosError === true
 
+const DiscordEmojiURLRegex = /^https:\/\/cdn\.discordapp\.com\/emojis\/\d{17,19}\.(?:gif|jpe?g|png|webp)$/
+
 export const parseEmojiURLOrBase64 = async (str: string) => {
     const twemoji = new RegExp(TwemojiRegex).exec(str)
 
@@ -73,6 +75,12 @@ export const parseEmojiURLOrBase64 = async (str: string) => {
 
     try {
         const url = new URL(str)?.href.split(/[?#]/)[0]
+
+        console.log({ url, emojiURL: DiscordEmojiURLRegex.test(url) })
+        
+        if (DiscordEmojiURLRegex.test(url))
+            return { base64String: null, defaultEmoji: false, givenName: null, url }
+
         const response = await axios.get(url, { responseType: 'arraybuffer' })
         const { headers: { 'content-type': contentType } } = response
         
@@ -89,12 +97,15 @@ export const parseEmojiURLOrBase64 = async (str: string) => {
     } catch (error) {
         if (error instanceof TypeError)
             return { error: ERRORS.INVALID_URL }
-
-        if (isAxiosError(error)) {
-            const status = error.response.status
+        else if (isAxiosError(error)) {
+            const status = error.response?.status
             
             if (status === 403)
                 return { error: ERRORS.ERROR_403 }
+            else if (status === 415)
+                return { error: ERRORS.ERROR_415 }
+            else
+                return { error: ERRORS.UNKNOWN }
         }
     }
 }
