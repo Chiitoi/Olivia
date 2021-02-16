@@ -18,7 +18,7 @@ export default class extends OliviaCommand {
         if (!phrase)
             return message.channel.send(MESSAGES.ERRORS.NOT_FOUND('emoji or image link'))
 
-        const { base64String, defaultEmoji, error, givenName, url } = await parseEmojiURLOrBase64(phrase)
+        const { defaultEmoji, error, givenName, url } = await parseEmojiURLOrBase64(phrase)
 
         if (error) {
             if (error == ERRORS.INVALID_URL)
@@ -40,12 +40,12 @@ export default class extends OliviaCommand {
         const parseName = (str: string) => str ? some(str.toLowerCase()) : none()
         const name = args.nextMaybe(parseName)?.value
 
-        if (base64String && !name)
+        if (url && !name)
             return message.channel.send(MESSAGES.ERRORS.NAME)
         if (name?.length > 32 || name?.length < 2)
             return message.channel.send(MESSAGES.INFO.NAME_LIMIT)
 
-        const emoji = await guild.emojis.create(url || base64String, name || givenName)
+        const emoji = await guild.emojis.create(url, name || givenName)
 
         if (!emoji)
             return message.channel.send(MESSAGES.ERRORS.EMOJI)
